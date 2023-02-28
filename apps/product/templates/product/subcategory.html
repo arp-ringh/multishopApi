@@ -1,0 +1,53 @@
+   {% extends 'store/base.html' %}
+   {% load static %}
+   {% block content %}
+   {% include 'product/parts/filter.html' %}
+                       
+            {% comment %}
+                    {% for product in subcategory.products.all %}
+                            {% include 'product/parts/single-item.html' %}                 
+                    {% endfor %}
+            {% endcomment %}
+
+                    {% for product in products %}
+                            {% include 'product/parts/single-item.html' %}                 
+                    {% endfor %}
+                    
+                <!-- paginations -->
+               <div class="col-12 pagination pagination justify-content-center">
+                   <span class="step-links">
+                     <ul class="pagination justify-content-center">
+                       {% if products.has_previous %}
+                           <li class="page-item"><a href="?page=1" class="page-link">&laquo; first</a></li>
+                           <li class="page-item"><a href="?page={{ products.previous_page_number }}" class="page-link">previous</a></li>
+                       {% endif %}
+               
+                       <span class="current">
+                           <li class="page-item page-link">Page {{ products.number }} of {{ products.paginator.num_pages }}.</li>
+                       </span>
+               
+                       {% if products.has_next %}
+                       <li class="page-item"><a href="?page={{ products.next_page_number }}" class="page-link">next</a></li>
+                           <li class="page-item"><a href="?page={{ products.paginator.num_pages }}" class="page-link">last &raquo;</a></li>
+                       {% endif %}
+                     </ul>
+                   </span>
+               </div>
+
+                   <!-- paginations -->
+                
+                </div>
+            </div>
+            <!-- Shop Product End -->
+        </div>
+    </div>
+    <!-- Shop End -->
+
+
+    <!-- Footer Start -->
+    
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+    {% endblock %}

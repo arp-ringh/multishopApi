@@ -1,0 +1,84 @@
+{% extends 'store/base.html' %}
+{% load static %}
+{% block content%}
+
+    <!-- Topbar Start -->
+    
+    <!-- Topbar End -->
+
+
+    <!-- Navbar Start -->
+    
+    <!-- Navbar End -->
+
+
+    <!-- Breadcrumb Start -->
+    <div class="container-fluid">
+        <div class="row px-xl-5">
+            <div class="col-12">
+                <nav class="breadcrumb bg-light mb-30">
+                    <a class="breadcrumb-item text-dark" href="#">Home</a>
+                    <a class="breadcrumb-item text-dark" href="#">Shop</a>
+                    <span class="breadcrumb-item active">Success</span>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <!-- Breadcrumb End -->
+
+
+    <!-- Cart Start -->
+    <div class="container-fluid">
+        <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span class="bg-secondary pr-3">Dashboard / Previous Orders</span></h2>
+        <div class="row px-xl-5">
+            <div class="col-lg-12 table-responsive mb-5">
+                <table class="table table-light table-borderless table-hover text-center mb-0">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>Thumbnail</th>
+                            <th>Products</th>
+                            <th>Price</th>
+                            <th>Quantity</th>
+                            <th>Total</th>
+                            <th>Delivery Status</th>
+                        </tr>
+                    </thead>
+                    <tbody class="align-middle">
+                    {% for items in orderitems %}
+
+                        <tr>
+                            <td class="align-middle"><img src="{{ items.product.get_thumbnail }}" alt="" style="width: 50px;"> <a style="color: black;" href="{% url 'product:product' items.product.category.slug items.product.slug %}"></td>
+                            <td class="align-middle">{{ items.product.name }}</a></td>
+                            <td class="align-middle">{{ items.product.price }}</td>
+                            <td class="align-middle">
+                            <span class="btn">{{ items.quantity }}</span>
+                            </td>
+                            <td class="align-middle">{{ items.price }}</td>
+                            <td class="align-middle">Processing</td>
+                        </tr>
+
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+                    </div>
+    </div>
+    <!-- Cart End -->
+
+
+    <!-- Footer Start -->
+    
+    <!-- Footer End -->
+
+
+    <!-- Back to Top -->
+
+
+    <!-- JavaScript Libraries -->
+
+    <!-- Template Javascript -->
+    
+
+    
+    {% endblock  %}
+
